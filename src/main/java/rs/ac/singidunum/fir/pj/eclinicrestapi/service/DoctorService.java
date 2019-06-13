@@ -25,7 +25,7 @@ public class DoctorService {
     }
 
     public Doctor updateDoctor(Long id, Doctor newDoctor) {
-        Doctor doctor = doctorRepository.findById(id).orElse(null);
+        Doctor doctor = getDoctorById(id);
         doctor.setFirstName(newDoctor.getFirstName());
         doctor.setLastName(newDoctor.getLastName());
         doctor.setEmail(newDoctor.getEmail());
