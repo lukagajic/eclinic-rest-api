@@ -1,6 +1,5 @@
 package rs.ac.singidunum.fir.pj.eclinicrestapi.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.entity.VisitType;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.repository.VisitTypeRepository;
@@ -9,8 +8,11 @@ import java.util.List;
 
 @Service
 public class VisitTypeService {
-    @Autowired
-    private VisitTypeRepository visitTypeRepository;
+    private final VisitTypeRepository visitTypeRepository;
+
+    public VisitTypeService(VisitTypeRepository visitTypeRepository) {
+        this.visitTypeRepository = visitTypeRepository;
+    }
 
     public List<VisitType> getAllVisitTypes() {
         return (List<VisitType>) visitTypeRepository.findAll();

@@ -1,6 +1,5 @@
 package rs.ac.singidunum.fir.pj.eclinicrestapi.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.entity.Doctor;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.repository.DoctorRepository;
@@ -9,8 +8,11 @@ import java.util.List;
 
 @Service
 public class DoctorService {
-    @Autowired
-    private DoctorRepository doctorRepository;
+    private final DoctorRepository doctorRepository;
+
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
 
     public List<Doctor> getAllDoctors() {
         return (List<Doctor>) doctorRepository.findAll();

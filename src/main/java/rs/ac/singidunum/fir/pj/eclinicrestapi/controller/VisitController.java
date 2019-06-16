@@ -1,6 +1,5 @@
 package rs.ac.singidunum.fir.pj.eclinicrestapi.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.entity.Visit;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.service.VisitService;
@@ -10,8 +9,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/visits")
 public class VisitController {
-    @Autowired
-    private VisitService visitService;
+    private final VisitService visitService;
+
+    public VisitController(VisitService visitService) {
+        this.visitService = visitService;
+    }
 
     @GetMapping
     public List<Visit> getAllVisits() {

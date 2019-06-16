@@ -1,6 +1,5 @@
 package rs.ac.singidunum.fir.pj.eclinicrestapi.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.entity.Doctor;
 import rs.ac.singidunum.fir.pj.eclinicrestapi.service.DoctorService;
@@ -10,8 +9,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/doctors")
 public class DoctorController {
-    @Autowired
-    private DoctorService doctorService;
+    private final DoctorService doctorService;
+
+    public DoctorController(DoctorService doctorService) {
+        this.doctorService = doctorService;
+    }
 
     @GetMapping
     public List<Doctor> getAllDoctors() {
